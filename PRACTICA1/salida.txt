@@ -1,0 +1,2 @@
+
+num_secuencias_mayus= 2,num_secuencias_minus=2, num_secuencias_mezcla=1, num_enteros=2, num_reales=1, suma_enteros=124, suma_reales= 1.230000

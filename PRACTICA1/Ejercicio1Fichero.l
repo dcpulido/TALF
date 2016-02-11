@@ -24,8 +24,10 @@ int yywrap()
     return 1; 
 } 
 
-main() 
+main(int argc,char *argv[]) 
 { 
+	printf("%s",argv[1]);
+	yyin=fopen(argv[1],"r");
     while (yylex());
     printf("num_secuencias_mayus= %d,num_secuencias_minus=%d, num_secuencias_mezcla=%d, num_enteros=%d, num_reales=%d, suma_enteros=%d, suma_reales= %f\n", num_secuencias_mayus,num_secuencias_minus,num_secuencias_mezcla,num_enteros,num_reales, suma_enteros,suma_reales); 
 } 
