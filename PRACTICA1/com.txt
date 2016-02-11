@@ -1,0 +1,11 @@
+/* programa hecho por david
+
+
+
+
+y por camba */ 
+
+main(){
+	//saca por pantalla hola mundo
+	printf("hola mundo");
+}
