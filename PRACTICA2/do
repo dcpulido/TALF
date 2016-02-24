@@ -1,0 +1,4 @@
+flex define.l
+gcc -o define lex.yy.c
+./define def out
+cat out
