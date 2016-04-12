@@ -43,6 +43,7 @@ expresion: CONSTANTE_REAL            { $$ = $1; }
   | expresion '*' expresion          { $$ = $1 * $3; }
   | expresion '/' expresion          { $$ = $1 / $3; }
   | expresion '^' expresion          { $$ = pow($1,$3);}
+  | '(' expresion ')'                { $$ = $2;}
 ;
 
 %%

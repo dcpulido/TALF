@@ -17,6 +17,9 @@ LETRA [A-Za-z]
 {DIGITO}+\.{DIGITO}+            { yylval.valor_real = atof(yytext);
                                   return (CONSTANTE_REAL);
                                   }
+"("                                 return (yytext[0]);
+
+")"                                 return (yytext[0]);
 
 "+"|"-"|"*"|"/"|"="|"^"             return (yytext[0]);
 
