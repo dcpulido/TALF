@@ -3,6 +3,7 @@
 #include <math.h>
 #include "diccionario.h"
 DICCIONARIO diccionario; /* variable global para el diccionario */
+double reg[40];
 %}
 
 /* Declaraciones de BISON */
@@ -16,9 +17,9 @@ DICCIONARIO diccionario; /* variable global para el diccionario */
 %token <valor_entero> CONSTANTE_ENTERA
 %token <texto> IDENTIFICADOR
 
+%right '^'
 %left '-' '+'
 %left '*' '/'
-%right '^'
 %type <valor_real> expresion
 
 %%
@@ -38,12 +39,16 @@ expresion: CONSTANTE_REAL            { $$ = $1; }
   | IDENTIFICADOR                    { ENTRADA * entrada = buscar_diccionario(&diccionario,$1);
                                        if (entrada != NULL) { $$ = entrada->valor; }
                                        else { printf("ERROR: variable %s no definida\n", $1); $$ = 0; } }
+  | expresion '^' expresion         { $$ = pow($1,$3);}
   | expresion '+' expresion          { $$ = $1 + $3; }
   | expresion '-' expresion          { $$ = $1 - $3; }
   | expresion '*' expresion          { $$ = $1 * $3; }
   | expresion '/' expresion          { $$ = $1 / $3; }
-  | expresion '^' expresion          { $$ = pow($1,$3);}
   | '(' expresion ')'                { $$ = $2;}
+  | 'r' CONSTANTE_ENTERA ']'             { $$ = reg[$2];}
+  | 'r' CONSTANTE_ENTERA 'm' expresion  { $$=reg[$2]=$4;}
+  
+
 ;
 
 %%

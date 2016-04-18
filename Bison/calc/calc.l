@@ -21,9 +21,17 @@ LETRA [A-Za-z]
 
 ")"                                 return (yytext[0]);
 
-"+"|"-"|"*"|"/"|"="|"^"             return (yytext[0]);
+"**"                                return ('^');
 
-"\n"                            return (yytext[0]);
+"+"|"-"|"*"|"/"|"="                 return (yytext[0]);
+
+"reg["                              return ('r');
+
+"]"                                 return (yytext[0]);
+
+"]="                                return ('m');
+
+"\n"                                return (yytext[0]);
 
 {LETRA}({LETRA}|_)*             { yylval.texto = (char *) malloc (strlen(yytext) + 1);
                                   strcpy(yylval.texto, yytext);
